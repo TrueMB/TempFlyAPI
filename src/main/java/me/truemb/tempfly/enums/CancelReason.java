@@ -1,4 +1,4 @@
-package main.java.me.truemb.tempfly.enums;
+package me.truemb.tempfly.enums;
 
 public enum CancelReason {
 	

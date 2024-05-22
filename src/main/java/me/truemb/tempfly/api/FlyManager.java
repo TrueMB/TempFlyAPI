@@ -1,17 +1,15 @@
-package main.java.me.truemb.tempfly.api;
+package me.truemb.tempfly.api;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
-import main.java.me.truemb.tempfly.enums.CancelReason;
-import main.java.me.truemb.tempfly.enums.FlyReason;
-import main.java.me.truemb.tempfly.enums.Time;
-import main.java.me.truemb.tempfly.objects.PlayerData;
+import me.truemb.tempfly.enums.CancelReason;
+import me.truemb.tempfly.enums.FlyReason;
+import me.truemb.tempfly.enums.Time;
+import me.truemb.tempfly.objects.PlayerData;
 
 public class FlyManager {
 	
@@ -95,10 +93,13 @@ public class FlyManager {
 	 * @param player - The Player to check the TempFly Status
 	 * @return boolean - if the player is flying through the TempFly plugin
 	 */
-	public boolean isFlying(Player player) {}
+	public boolean isFlying(Player player) {
+		return false;
+			
+	}
 	
 	public CancelReason setPlayerFlying(Player player, boolean value) {
-		return null;
+		return CancelReason.SUCCESS;
 	}
 	
 	/**
@@ -112,7 +113,7 @@ public class FlyManager {
 	 * @return
 	 */
 	public CancelReason setPlayerFlying(Player player, boolean value, FlyReason reason) {
-		return null;
+		return CancelReason.SUCCESS;
 	}
 	
 	/**
@@ -147,7 +148,7 @@ public class FlyManager {
 	 * @return - The Flytime in Milliseconds that is left
 	 */
 	public long getFlyTime(UUID uuid) {
-		return -1;
+		return 0;
 	}
 	
 	/**
@@ -158,16 +159,15 @@ public class FlyManager {
 	 * @return - Milliseconds
 	 */
 	public long getTimeConvertedMillis(Time timeUnit, long timeValue) {
-		return -1;
+		return 0;
 	}
-	
 	/**
 	 * The Formatted String for the Time left
 	 * 
 	 * @param uuid - The Player UUID
 	 * @return - The String formatted Time
 	 */
-	public String getTimeFormatted(UUID uuid) {
+	public String getTimeFormatted(UUID uuid, boolean ignoreLimiter) {
 		return null;
 	}
 	
@@ -177,7 +177,7 @@ public class FlyManager {
 	 * @param uuid - The Player UUID
 	 * @return - The String formatted Time
 	 */
-	public String getTimeFormatted(UUID uuid, boolean infinite, boolean showAlsoZeros) {
+	public String getTimeFormatted(UUID uuid, boolean infinite, boolean showAlsoZeros, boolean ignoreLimiter) {
 		return null;
 	}
 	
@@ -199,7 +199,7 @@ public class FlyManager {
 	 * @param time - the time to convert
 	 * @return - The String formatted Time
 	 */
-	public String getTimeFormatted(UUID uuid, long time, boolean infinite, boolean showAlsoZeros) {
+	public String getTimeFormatted(UUID uuid, long time, boolean infinite, boolean showAlsoZeros, boolean ignoreLimiter) {
 		return null;
 	}
 	
@@ -218,7 +218,7 @@ public class FlyManager {
 	 * @return boolean - if the World is blacklisted
 	 */
 	public boolean isBlacklistedWorld(World world) {
-		return true;
+		return false;
 	}
 	
 	/**
@@ -250,7 +250,9 @@ public class FlyManager {
 	 * @param p - The Player
 	 * @return
 	 */
-	public boolean isFlyingAllowedInClaim(Player p, Location loc) {}
+	public boolean isFlyingAllowedInClaim(Player p, Location loc) {
+		return false;
+	}
 
 	/**
 	 * Checks if Player is allowed to use flying in the current Area
@@ -264,6 +266,17 @@ public class FlyManager {
 	}
 	
 	/**
+	 * Checks if Player is allowed to use flying in the current Area
+	 * HuskClaims
+	 * 
+	 * @param p - The Player
+	 * @return
+	 */
+	public boolean isFlyingAllowedInHuskClaim(Player p, Location loc) {
+		return false;
+	}
+	
+	/**
 	 * Checks if Player is allowed to use flying in the current Residence
 	 * 
 	 * @param p - The Player
@@ -272,12 +285,34 @@ public class FlyManager {
 	public boolean isFlyingAllowedInResidence(Player p, Location loc) {
 		return false;
 	}
+
+	/**
+	 * Checks if Player is allowed to use flying in the current Faction
+	 * 
+	 * @param p - The Player
+	 * @return
+	 */
+	public boolean isFlyingAllowedInFaction(Player p, Location loc) {
+		return false;
+	}
+	
+	/**
+	 * Checks if Player is allowed to use flying in the current Skyblock Island
+	 * 
+	 * @param p - The Player
+	 * @return
+	 */
+	public boolean isFlyingAllowedInSkyblock(Player p, Location loc) {
+		return false;
+	}
 	
 	/**
 	 * 
 	 * @param p - Player
 	 * @param loc - Location
-	 * @return Checks all APIs for Fly Allowed.
+	 * @param withMessage - sends a message to the player, if he is not allowed
+	 * 
+	 * @return Checks all APIs for Fly Allowed. Doesn't stop or cancel the flight
 	 */
 	public boolean checkApiForFlyAllowed(Player p, Location loc, boolean withMessage) {
 		return false;
