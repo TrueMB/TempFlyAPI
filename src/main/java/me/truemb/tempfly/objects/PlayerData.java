@@ -89,6 +89,10 @@ public class PlayerData {
 		this.owning_particles.add(particle);
 	}
 
+	public void removeOwningParticles(Particle particle) {
+		this.owning_particles.remove(particle);
+	}
+
 	public Particle getActiveParticle() {
 		return this.activeParticle;
 	}
