@@ -275,6 +275,17 @@ public class FlyManager {
 	public boolean isFlyingAllowedInHuskClaim(Player p, Location loc) {
 		return false;
 	}
+
+	/**
+	 * Checks if Player is allowed to Fly in that region from Towny.
+	 * 
+	 * @param p - The Player
+	 * @param loc - The Location to check
+	 * @return
+	 */
+	public boolean isFlyingAllowedInTown(Player p, Location loc) {
+		return false;
+	}
 	
 	/**
 	 * Checks if Player is allowed to use flying in the current Residence
